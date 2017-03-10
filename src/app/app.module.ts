@@ -5,8 +5,6 @@ import { HttpModule } from '@angular/http';
 import { AccordionModule } from 'primeng/primeng';     // accordion and accordion tab
 import { MenuItem } from 'primeng/primeng';            // api
 import { RouterModule } from '@angular/router';
-import { RestangularModule } from 'ng2-restangular';
-import { RestangularConfigFactory } from './rest-angular-config';
 
 // Components
 import { AppComponent } from './app.component';
@@ -31,8 +29,6 @@ import { reducer } from './app.state';
   imports: [
     RouterModule.forRoot(routes),
     StoreModule.provideStore(reducer),
-    // Importing RestangularModule and making default configs for restanglar
-    RestangularModule.forRoot(RestangularConfigFactory),
     BrowserModule,
     FormsModule,
     HttpModule,
