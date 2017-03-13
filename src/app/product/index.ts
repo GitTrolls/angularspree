@@ -1,16 +1,14 @@
-import { ProductEffects } from './effects/product.effects';
 import { NgModule } from '@angular/core';
 
 // Components
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductComponent } from './product.component';
-import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
     // components
     ProductDetailComponent,
-    ProductComponent,
+    ProductComponent
     // pipes
   ],
   exports: [
@@ -18,7 +16,6 @@ import { EffectsModule } from '@ngrx/effects';
     ProductDetailComponent,
   ],
   imports: [
-    EffectsModule.run(ProductEffects),
   ]
 })
 export class ProductModule {}

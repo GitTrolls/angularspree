@@ -1,10 +1,10 @@
 import { Product } from './../../core/models/product';
 import { Map, Record } from 'immutable';
 
-export interface ProductState extends Map<string, any> {
-  productIds: [number];
-  productEntities: { [id: number]: Product};
-  selectedProductId: number;
+export interface ProductState extends Map<string,any> {
+  productIds: [string];
+  productEntities: {[id: string]: Product};
+  selectedProductId: string;
   selectedProduct: Product;
 }
 
