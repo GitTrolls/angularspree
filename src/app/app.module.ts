@@ -15,13 +15,12 @@ import { SharedModule } from './shared/index';
 import { UserModule } from './user/index';
 import { HomeModule } from './home/index';
 import { LayoutModule } from './layout/index';
-import { CheckoutModule } from './checkout/checkout.module';
+import { CartModule } from './cart/index';
 import { ProductModule } from './product/index';
 import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-// AppState
 
 @NgModule({
   declarations: [
@@ -38,7 +37,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpModule,
     HomeModule,
     LayoutModule,
-    CheckoutModule,
+    CartModule,
     CoreModule,
     EffectsModule.run(ProductEffects),
     StoreDevtoolsModule.instrumentOnlyWithExtension()
