@@ -133,12 +133,10 @@ export class HttpService extends Http {
     if (options == null) {
       options = new RequestOptions();
     }
-
     if (options.headers == null) {
-      const user = JSON.parse(localStorage.getItem('user'));
       options.headers = new Headers({
-        'Content-Type': 'application/json',
-        'X-Spree-Token': user && user.spree_api_key
+        // 'Authorization': `Basic ${environment.basic_auth_token}`,
+        'X-Spree-Token': localStorage.getItem('x-spree-token')
       });
     }
     return options;
