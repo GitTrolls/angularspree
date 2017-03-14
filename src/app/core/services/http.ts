@@ -134,11 +134,12 @@ export class HttpService extends Http {
       options = new RequestOptions();
     }
 
-    if (options.headers == null) {
-      const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (options.headers == null && user) {
       options.headers = new Headers({
-        'Content-Type': 'application/json',
-        'X-Spree-Token': user && user.spree_api_key
+        // 'Authorization': `Basic ${environment.basic_auth_token}`,
+        'X-Spree-Token': user.spree_api_key
       });
     }
     return options;
