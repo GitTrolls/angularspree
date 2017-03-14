@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LineItemComponent } from './line-item.component';
+import { ProfileDropdownComponent } from './profile-dropdown.component';
 
-describe('LineItemComponent', () => {
-  let component: LineItemComponent;
-  let fixture: ComponentFixture<LineItemComponent>;
+describe('ProfileDropdownComponent', () => {
+  let component: ProfileDropdownComponent;
+  let fixture: ComponentFixture<ProfileDropdownComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LineItemComponent ]
+      declarations: [ ProfileDropdownComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LineItemComponent);
+    fixture = TestBed.createComponent(ProfileDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
