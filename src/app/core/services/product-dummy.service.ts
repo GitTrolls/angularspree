@@ -578,14 +578,6 @@ export class ProductDummyService {
                   'option_type_id': 1,
                   'option_type_presentation': 'Size'
                 },
-                                {
-                  'id': 1,
-                  'name': 'medium',
-                  'presentation': 'S',
-                  'option_type_name': 'tshirt-size',
-                  'option_type_id': 1,
-                  'option_type_presentation': 'Size'
-                },
                 {
                   'id': 5,
                   'name': 'Red',
