@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-profile-dropdown',
@@ -9,17 +8,9 @@ import { AuthService } from '../../../core/services/auth.service';
 export class ProfileDropdownComponent implements OnInit {
   @Input() isAuthenticated: boolean;
 
-  constructor(
-    private authService: AuthService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  logout() {
-    this.authService.logout().subscribe(
-      data => console.log(data)
-    );
   }
 
 }
