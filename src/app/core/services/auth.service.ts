@@ -1,50 +1,36 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Rx';
-import { Response } from '@angular/http';
-import { HttpService } from './http';
-import { AppState } from '../../interfaces';
-import { Store } from '@ngrx/store';
-import { AuthActions } from '../../auth/actions/auth.actions';
+import { Http, Headers, Response } from '@angular/http';
 
 @Injectable()
 export class AuthService {
   private apiLink: string = environment.API_ENDPOINT; // "http://localhost:3000";
 
   constructor(
-    private http: HttpService,
-    private actions: AuthActions,
-    private store: Store<AppState>
+    private http: Http
   ) {
 
   }
 
   // returns an observable with user object
   login(data): Observable<Object> {
+    const headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
     return this.http.post(
-      'spree/login.json',
-      { spree_user: data }
+      `${this.apiLink}/spree/login.json`,
+      JSON.stringify(data),
+      { headers: headers}
     ).map((res: Response) => {
       // Setting token after login
       this.setTokenInLocalStorage(res.json());
-      this.store.dispatch(this.actions.loginSuccess());
       return res.json();
     }).catch((res: Response) => this.catchError(res));
     // catch should be handled here with the http observable
     // so that only the inner obs dies and not the effect Observable
     // otherwise no further login requests will be fired
     // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
-  }
-
-  // returns an observable
-  logout() {
-    return this.http.get('spree/logout.json')
-      .map((res: Response) => {
-        // Setting token after login
-        localStorage.removeItem('user');
-        this.store.dispatch(this.actions.logoutSuccess());
-        return res.json();
-      }).catch((res: Response) => this.catchError(res));
   }
 
   private setTokenInLocalStorage(user_data): void {

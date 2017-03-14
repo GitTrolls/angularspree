@@ -1,21 +1,10 @@
 module.exports = {
-  staticFileGlobs: [
-    'dist/**.html',
-    'dist/**.js',
-    'dist/**.css',
-    'dist/assets/images/*',
-    'dist/*.eot',
-    'dist/*.woff2',
-    'dist/*.ttf',
-    'dist/*.woff',        
-    'dist/*.svg',
-    'dist/*.gif',    
-  ],
-  root: 'dist',
-  stripPrefix: 'dist/',
   navigateFallback: '/index.html',
-  runtimeCaching: [{
-    urlPattern: '',
-    handler: 'networkFirst'
-  }]
+  stripPrefix: 'dist',
+  root: 'dist/',
+  staticFileGlobs: [
+    'dist/index.html',
+    'dist/**.js',
+    'dist/**.css'
+  ]
 };

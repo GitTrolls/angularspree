@@ -1,5 +1,3 @@
-import { ProductEffects } from './product/effects/product.effects';
-import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -19,8 +17,7 @@ import { CartModule } from './cart/index';
 import { ProductModule } from './product/index';
 import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './app.reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducer } from './app.state';
 // AppState
 
 @NgModule({
@@ -30,9 +27,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   imports: [
     RouterModule.forRoot(routes),
     StoreModule.provideStore(reducer),
-    StoreDevtoolsModule.instrumentOnlyWithExtension({
-      maxAge: 5
-    }),
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -40,8 +34,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     LayoutModule,
     CartModule,
     CoreModule,
-    EffectsModule.run(ProductEffects),
-    StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   providers: [],
   bootstrap: [AppComponent]
