@@ -21,6 +21,7 @@ import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+// AppState
 
 @NgModule({
   declarations: [
