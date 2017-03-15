@@ -1,6 +1,5 @@
-import { CheckoutService } from './../../core/services/checkout.service';
-import { CheckoutActions } from './../actions/checkout.actions';
 import { Observable } from 'rxjs/Rx';
+import { CartActions } from './actions/cart-actions';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { LineItem } from './../../core/models/line_item';
@@ -15,19 +14,15 @@ export class CartComponent implements OnInit {
 
   variant_id = 1;
 
-  constructor(private store: Store<AppState>, private actions: CheckoutActions, private checkoutService: CheckoutService) { }
+  constructor(private store: Store<AppState>, private actions: CartActions) { }
 
   ngOnInit() {
-    // this.store.dispatch(this.actions.fetchCurrentOrder());
-    this.checkoutService.fetchCurrentOrder()
-      .subscribe();
+    this.store.dispatch(this.actions.fetchCurrentOrder());
   }
 
   addToCart() {
     this.variant_id++;
-    // this.store.dispatch(this.actions.addToCart(this.variant_id));
-    this.checkoutService.createNewLineItem(this.variant_id)
-      .subscribe();
+    this.store.dispatch(this.actions.addToCart(this.variant_id));
   }
 
 }

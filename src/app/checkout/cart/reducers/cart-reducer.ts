@@ -1,19 +1,19 @@
-import { LineItem } from './../../core/models/line_item';
-import { CheckoutActions } from './../actions/checkout.actions';
-import { CheckoutState, CheckoutStateRecord } from './checkout.state';
+import { LineItem } from './../../../core/models/line_item';
+import { CartActions } from './../actions/cart-actions';
 import { Action, ActionReducer } from '@ngrx/store';
+import { CartState, CartStateRecord } from './cart-state';
 
 
-export const initialState: CheckoutState = new CheckoutStateRecord() as CheckoutState;
+export const initialState: CartState = new CartStateRecord() as CartState;
 
-export const checkoutReducer: ActionReducer<CheckoutState> =
-  (state: CheckoutState = initialState, { type, payload }: Action): CheckoutState => {
+export const cartReducer: ActionReducer<CartState> =
+  (state: CartState = initialState, { type, payload }: Action): CartState => {
 
     let _lineItems, _lineItemEntities, _lineItemIds, _lineItem, _lineItemEntity, _lineItemId;
 
     switch (type) {
 
-      case CheckoutActions.FETCH_CURRENT_ORDER_SUCCESS:
+      case CartActions.FETCH_CURRENT_ORDER_SUCCESS:
         const _orderNumber = payload.number;
         let _totalCartItems = 0;
         _lineItems = payload.line_items;
@@ -34,9 +34,9 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
           lineItemIds: _lineItemIds,
           lineItemEntities: _lineItemEntities,
           totalCartItems: _totalCartItems
-        }) as CheckoutState;
+        }) as CartState;
 
-      case CheckoutActions.ADD_TO_CART_SUCCESS:
+      case CartActions.ADD_TO_CART_SUCCESS:
         _lineItem = payload;
         _lineItemId = _lineItem.id;
 
@@ -53,9 +53,9 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
           lineItemIds: _lineItemIds,
           lineItemEntities: state.lineItemEntities.merge(_lineItemEntity),
           totalCartItems: _totalCartItems
-        }) as CheckoutState;
+        }) as CartState;
 
-      case CheckoutActions.REMOVE_LINE_ITEM_SUCCESS:
+      case CartActions.REMOVE_LINE_ITEM_SUCCESS:
         _lineItemId = payload.id;
         const _quantity = payload.quantity;
         const index = state.lineItemIds.indexOf(_lineItemId);
@@ -69,9 +69,9 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
           lineItemIds: _lineItemIds,
           lineItemEntities: _lineItemEntities,
           totalCartItems: _totalCartItems
-        }) as CheckoutState;
+        }) as CartState;
 
-      // case CheckoutActions.CHANGE_LINE_ITEM_QUANTITY:
+      // case CartActions.CHANGE_LINE_ITEM_QUANTITY:
       //   const quantity = payload.quantity;
       //   lineItemId = payload.lineItemId;
       //   _lineItemEntities = state.lineItemEntities;
@@ -79,7 +79,7 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
 
       //   return state.merge({
       //     lineItemEntities: _lineItemEntities
-      //   }) as CheckoutState;
+      //   }) as CartState;
 
       default:
         return state;
