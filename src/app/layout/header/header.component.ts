@@ -1,4 +1,3 @@
-import { getTotalCartItems } from './../../checkout/cart/reducers/selectors';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';
@@ -13,7 +12,6 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   isAuthenticated: Observable<boolean>;
-  totalCartItems: Observable<number>;
 
   constructor(
     private store: Store<AppState>,
@@ -23,7 +21,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.authService.authorized().subscribe();
     this.isAuthenticated = this.store.select(getAuthStatus);
-    this.totalCartItems = this.store.select(getTotalCartItems);
   }
 
 }
