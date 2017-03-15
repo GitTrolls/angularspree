@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
 import { Store } from '@ngrx/store';
@@ -6,17 +6,15 @@ import { AppState } from '../../../interfaces';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { getAuthStatus } from '../../reducers/selectors';
-import { Subscription } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit, OnDestroy {
+export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   title = environment.AppName;
-  registerSubs: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -33,29 +31,18 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const values = this.signUpForm.value;
-    this.registerSubs = this.authService.register(values).subscribe(data => {
-      const errors = data.errors;
-      if (errors) {
-        const keys = Object.keys(errors);
-
-        keys.forEach(val => {
-          this.signUpForm.controls[val].setErrors({
-            'msg': errors[val][0]
-          });
-        });
-      }
-    });
+    this.authService.register(values).subscribe();
   }
 
   initForm() {
     const email = '';
     const password = '';
-    const password_confirmation = '';
+    const confirm_password = '';
 
     this.signUpForm = this.fb.group({
       'email': [email, Validators.required],
       'password': [password, Validators.required],
-      'password_confirmation': [password_confirmation, Validators.required],
+      'confirm_password': [confirm_password, Validators.required],
     });
   }
 
@@ -65,9 +52,5 @@ export class SignUpComponent implements OnInit, OnDestroy {
         if (data === true) { this.router.navigateByUrl('/'); }
       }
     );
-  }
-
-  ngOnDestroy() {
-    if (this.registerSubs) { this.registerSubs.unsubscribe(); }
   }
 }
