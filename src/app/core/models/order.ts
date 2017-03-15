@@ -9,7 +9,7 @@ import { Address } from './address';
 import { Payment } from './payment';
 
 export class Order {
-  id: number;
+  id: string;
   number: string;
   item_total: string;
   total: string;

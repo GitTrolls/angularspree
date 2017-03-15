@@ -11,9 +11,11 @@ export const productReducer: ActionReducer<ProductState> =
   switch (type) {
 
     case ProductActions.GET_PRODUCT_DETAIL_SUCCESS:
-      return state.merge({
+      Object.assign({}, state, {
         selectedProduct: payload
-      }) as ProductState;
+      });
+
+      return state;
 
     case ProductActions.GET_ALL_PRODUCTS_SUCCESS:
       const _products: Product[] = payload.products.products;
@@ -34,6 +36,8 @@ export const productReducer: ActionReducer<ProductState> =
       taxonomies: _taxonomies
     }) as ProductState;
 
+    // case "":
+    //     return state;
     default:
       return state;
   }

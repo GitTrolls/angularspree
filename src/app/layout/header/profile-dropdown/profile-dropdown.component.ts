@@ -8,7 +8,6 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class ProfileDropdownComponent implements OnInit {
   @Input() isAuthenticated: boolean;
-  @Input() totalCartItems: number;
 
   constructor(
     private authService: AuthService
