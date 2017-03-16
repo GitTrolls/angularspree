@@ -12,12 +12,7 @@
 @import url('../node_modules/font-awesome/css/font-awesome.min.css');
 
 body {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #697071;
-  background-color: #fff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff !important;
 }
 
 .col-centered {
@@ -27,5 +22,5 @@ body {
 
 html *:not(.fa)
 {
-   font-family: Whitney;
+   font-family: Whitney !important;
 }
