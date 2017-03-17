@@ -1,3 +1,6 @@
-<p>
-  address works!
-</p>
+<div *ngIf="(shipAddress$ | async)">
+	<app-delivery-address [address]="(shipAddress$ | async)"></app-delivery-address>
+</div>
+<div *ngIf="!(shipAddress$ | async)">
+	<app-add-address></app-add-address>
+</div>
