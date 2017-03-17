@@ -62,15 +62,4 @@ export class CheckoutService {
     });
   }
 
-  updateOrder(params) {
-    return this.http.put(
-      `spree/api/v1/checkouts/${this.orderNumber}.json`,
-      params
-    ).map((res) => {
-      const order = res.json();
-      this.store.dispatch(this.actions.updateOrderSuccess(order));
-    });
-  }
-
-
 }
