@@ -1,11 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-// Pipes
-import { KeysPipe } from './pipes/keys.pipe';
-
 // components
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
+
 // imports
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,18 +13,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     // components
     LoadingIndicatorComponent,
     // pipes
-    KeysPipe
+
   ],
   exports: [
     // components
     LoadingIndicatorComponent,
+
     // modules
     CommonModule,
     DropdownModule,
     FormsModule,
     ReactiveFormsModule,
+
     // pipes
-    KeysPipe
+
   ],
   imports: [
     FormsModule,

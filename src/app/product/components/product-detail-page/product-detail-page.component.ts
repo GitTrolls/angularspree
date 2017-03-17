@@ -12,34 +12,30 @@ import { ProductService } from './../../../core/services/product.service';
 })
 export class ProductDetailPageComponent implements OnInit {
   actionsSubscription: Subscription;
-  product$: Product = null;
+  product$: Observable<Product>;
   routeSubs: Subscription;
   productId: any;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute) {
+  };
 
-  /**On Init
+  /**On Init 
    * 1. Parse route params
    * 2. Retrive product id
    * 3. Ask for the product detail based on product id 
    * */
+  ngOnInit() {
     this.actionsSubscription = this.route.params.subscribe(
       (params: any) => {
         this.productId = params['id'];
-        this.productService
-          .getProduct(this.productId)
-          .subscribe(response => this.product$ = response);
+        this.product$ = this.productService.getProduct(this.productId);
      }
     );
-  };
-
-
-  ngOnInit() {
   }
 
   /**
-   * Action To be dispatched
+   * Action To be dispatched 
    * when added to cart
    */
   addToCart(){
