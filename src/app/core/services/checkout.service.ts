@@ -57,20 +57,9 @@ export class CheckoutService {
       `spree/api/v1/checkouts/${this.orderNumber}/next.json`,
       {}
     ).map((res) => {
-      const order = res.json();
-      this.store.dispatch(this.actions.changeOrderStateSuccess(order));
+      console.log('response', res.json());
+      // this.store.dispatch(this.actions.changeOrderState());
     });
   }
-
-  updateOrder(params) {
-    return this.http.put(
-      `spree/api/v1/checkouts/${this.orderNumber}.json`,
-      params
-    ).map((res) => {
-      const order = res.json();
-      this.store.dispatch(this.actions.updateOrderSuccess(order));
-    });
-  }
-
 
 }

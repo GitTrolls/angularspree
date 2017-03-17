@@ -11,9 +11,7 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
 
     let _lineItems, _lineItemEntities, _lineItemIds,
         _lineItem, _lineItemEntity, _lineItemId,
-        _totalCartItems = 0, _totalCartValue,
-        _ship_address, _bill_address,
-        _orderState;
+        _totalCartItems = 0, _totalCartValue;
 
     switch (type) {
 
@@ -23,9 +21,6 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
         _lineItemIds = _lineItems.map(lineItem => lineItem.id);
         _totalCartItems = payload.total_quantity;
         _totalCartValue = parseFloat(payload.total);
-        _ship_address = payload.ship_address;
-        _bill_address = payload.bill_address;
-        _orderState = payload.state;
 
         _lineItemEntities = _lineItems.reduce((lineItems: { [id: number]: LineItem }, lineItem: LineItem) => {
           return Object.assign(lineItems, {
@@ -35,13 +30,10 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
 
         return state.merge({
           orderNumber: _orderNumber,
-          orderState: _orderState,
           lineItemIds: _lineItemIds,
           lineItemEntities: _lineItemEntities,
           totalCartItems: _totalCartItems,
-          totalCartValue: _totalCartValue,
-          shipAddress: _ship_address,
-          billAddress: _bill_address
+          totalCartValue: _totalCartValue
         }) as CheckoutState;
 
       case CheckoutActions.ADD_TO_CART_SUCCESS:
@@ -95,21 +87,6 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
 
       // case CheckoutActions.CHANGE_ORDER_STATE:
 
-      case CheckoutActions.CHANGE_ORDER_STATE_SUCCESS:
-        _orderState = payload.state;
-
-        return state.merge({
-          orderState: _orderState
-        }) as CheckoutState;
-
-      case CheckoutActions.UPDATE_ORDER_SUCCESS:
-        _ship_address = payload.ship_address;
-        _bill_address = payload.bill_address;
-
-        return state.merge({
-          shipAddress: _ship_address,
-          billAddress: _bill_address
-        }) as CheckoutState;
 
       default:
         return state;
