@@ -1,7 +1,5 @@
-import { VariantRetriverService } from './../../../../core/services/variant-retriver.service';
-import { Component, OnInit, Input } from '@angular/core';
 import { Product } from './../../../../core/models/product';
-import { VariantParserService } from './../../../../core/services/variant-parser.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-details',
@@ -10,25 +8,9 @@ import { VariantParserService } from './../../../../core/services/variant-parser
 })
 export class ProductDetailsComponent implements OnInit {
   @Input() product: Product;
-  customOptionTypesHash: any;
-  currentSelectedOptions = {};
-
-  constructor(private variantParser: VariantParserService) {
-  }
+  constructor() { }
 
   ngOnInit() {
-    this.customOptionTypesHash = this.variantParser
-      .getOptionsToDisplay(this.product.variants, this.product.option_types);
   }
 
-  /**
-   * @param: option: { key: "small",
-   *                   value: {optionValue: {etc etc},
-   *                   variantIds: [1,2,3] }}
-   */
-  onOptionClick(option) {
-    const newVarient = new VariantRetriverService(this.currentSelectedOptions,
-                        this.customOptionTypesHash,
-                        option, this.product).getVariant();
-    }
 }
