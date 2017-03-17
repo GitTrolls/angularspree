@@ -57,8 +57,27 @@ export class CheckoutService {
       `spree/api/v1/checkouts/${this.orderNumber}/next.json`,
       {}
     ).map((res) => {
-      console.log('response', res.json());
-      // this.store.dispatch(this.actions.changeOrderState());
+      const order = res.json();
+      this.store.dispatch(this.actions.changeOrderStateSuccess(order));
+    });
+  }
+
+  updateOrder(params) {
+    return this.http.put(
+      `spree/api/v1/checkouts/${this.orderNumber}.json`,
+      params
+    ).map((res) => {
+      const order = res.json();
+      this.store.dispatch(this.actions.updateOrderSuccess(order));
+    });
+  }
+
+  availablePaymentMethods() {
+    return this.http.get(
+      `spree/api/v1/orders/${this.orderNumber}/payments/new`
+    ).map((res) => {
+      const payments = res.json();
+      return payments;
     });
   }
 
