@@ -1,8 +1,3 @@
-import { getShipAddress } from './../reducers/selectors';
-import { AppState } from './../../interfaces';
-import { Store } from '@ngrx/store';
-import { Address } from './../../core/models/address';
-import { Observable } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,11 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddressComponent implements OnInit {
 
-  shipAddress$: Observable<Address>;
-
-  constructor(private store: Store<AppState>) {
-    this.shipAddress$ = this.store.select(getShipAddress);
-  }
+  constructor() { }
 
   ngOnInit() {
   }
