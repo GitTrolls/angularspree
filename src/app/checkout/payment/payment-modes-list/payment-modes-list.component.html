@@ -1,0 +1,3 @@
+<div *ngFor="let mode of paymentModes">
+  <app-payment-mode [paymentMode]="mode" (changePaymentMode)="selectedPaymentMode($event)" ></app-payment-mode>
+</div>
