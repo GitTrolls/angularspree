@@ -5,7 +5,6 @@ import { AppState } from '../../interfaces';
 import { getAuthStatus } from '../../auth/reducers/selectors';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../core/services/auth.service';
-import { AuthActions } from '../../auth/actions/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -19,12 +18,11 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private authService: AuthService,
-    private actions: AuthActions
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.store.dispatch(this.actions.authorize());
+    this.authService.authorized().subscribe();
     this.isAuthenticated = this.store.select(getAuthStatus);
     this.totalCartItems = this.store.select(getTotalCartItems);
   }

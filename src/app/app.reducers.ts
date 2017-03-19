@@ -1,9 +1,7 @@
 import { environment } from './../environments/environment';
 import { productReducer } from './product/reducers/product-reducer';
 import { ProductState } from './product/reducers/product-state';
-import { userReducer } from './user/reducers/user.reducer';
 import { checkoutReducer } from './checkout/reducers/checkout.reducer';
-import { authReducer } from './auth/reducers/auth.reducer';
 
 /**
  * combineReducers is another useful metareducer that takes a map of reducer
@@ -16,6 +14,7 @@ import { authReducer } from './auth/reducers/auth.reducer';
 import { combineReducers, ActionReducer } from '@ngrx/store';
 
 import { AppState } from './interfaces';
+import { authReducer } from './auth/reducers/auth.reducer';
 
 /**
  * The compose function is one of our most handy tools. In basic terms, you give
@@ -37,8 +36,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 const reducers = {
   products: productReducer,
   auth: authReducer,
-  checkout: checkoutReducer,
-  users: userReducer
+  checkout: checkoutReducer
 };
 
 export const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, combineReducers)(reducers);;
