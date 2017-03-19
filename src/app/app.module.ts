@@ -1,5 +1,3 @@
-import { ProductEffects } from './product/effects/product.effects';
-import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -24,7 +22,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -39,7 +37,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     LayoutModule,
     CheckoutModule,
     CoreModule,
-    EffectsModule.run(ProductEffects),
     StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   providers: [],
