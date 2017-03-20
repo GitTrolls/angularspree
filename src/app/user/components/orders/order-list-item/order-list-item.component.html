@@ -1,15 +1,3 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h5 class="active">{{order.shipment_state | uppercase}}</h5>
-    <small>
-      Placed on {{order.created_at | date:'fullDate'}} / 
-      <i
-        class="fa fa-{{order.currency | lowercase}}"
-        aria-hidden="true">
-      </i>{{order.total}} / 
-      {{order.products.length}} items /
-      Payment: {{order.payment_state | humanize | uppercase}}
-    </small>
-    <hr>
-  </div>
-</div>
+<p>
+  order-list-item works!
+</p>
