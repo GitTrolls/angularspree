@@ -1,4 +1,4 @@
-import { CartService } from './services/cart.service';
+import { CheckoutService } from './services/checkout.service';
 import { NgModule } from '@angular/core';
 import { ProductDummyService } from './services/product-dummy.service';
 import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
@@ -9,6 +9,9 @@ import { AuthService } from './services/auth.service';
 import { HttpService } from './services/http';
 import { ProductService } from './services/product.service';
 import { AuthActions } from '../auth/actions/auth.actions';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthenticationEffects } from '../auth/effects/auth.effects';
+import { ProductEffects } from '../product/effects/product.effects';
 
 
 export function httpInterceptor(
@@ -29,6 +32,8 @@ export function httpInterceptor(
     // DummyService
   ],
   imports: [
+    EffectsModule.run(AuthenticationEffects),
+    EffectsModule.run(ProductEffects),
   ],
   providers: [
     AuthService,
@@ -37,7 +42,7 @@ export function httpInterceptor(
       useFactory: httpInterceptor,
       deps: [ XHRBackend, RequestOptions]
     },
-    CartService,
+    CheckoutService,
     ProductDummyService,
     ProductService,
     AuthActions
