@@ -1,18 +1,19 @@
+import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
 import { CheckoutService } from './../../core/services/checkout.service';
 import { getShipAddress, getOrderState } from './../reducers/selectors';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Address } from './../../core/models/address';
-import { Observable, Subscription } from 'rxjs/Rx';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.scss']
 })
-export class AddressComponent implements OnInit, OnDestroy {
+export class AddressComponent implements OnInit {
 
   stateSub$: Subscription;
   orderState: string;
@@ -35,10 +36,6 @@ export class AddressComponent implements OnInit, OnDestroy {
         .subscribe();
     }
     this.router.navigate(['/checkout', 'payment']);
-  }
-
-  ngOnDestroy() {
-    this.stateSub$.unsubscribe();
   }
 
 }

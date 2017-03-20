@@ -1,7 +1,3 @@
-import { getTotalCartValue } from './../reducers/selectors';
-import { AppState } from './../../interfaces';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,11 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
-  totalCartValue: Observable<number>;
-
-  constructor(private store: Store<AppState>) {
-    this.totalCartValue = this.store.select(getTotalCartValue);
-  }
+  constructor() { }
 
   ngOnInit() {
   }
