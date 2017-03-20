@@ -2,7 +2,6 @@ import { OverviewComponent } from './components/overview/overview.component';
 import { UserComponent } from './user.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { AddressesComponent } from './components/addresses/addresses.component';
-import { OrderDetailComponent } from './components/orders/order-detail/order-detail.component';
 
 export const UserRoutes = [
   {
@@ -12,7 +11,6 @@ export const UserRoutes = [
       { path: '', redirectTo: 'overview' },
       { path: 'overview', component: OverviewComponent },
       { path: 'orders', component: OrdersComponent },
-      { path: 'orders/detail/:number', component: OrderDetailComponent },
       { path: 'addresses', component: AddressesComponent }
     ]
   },

@@ -16,7 +16,7 @@ export class UsersEffects {
 
   // tslint:disable-next-line:member-ordering
   @Effect()
-    GetUserOrders$: Observable<Action> = this.actions$
+    Authorized$: Observable<Action> = this.actions$
     .ofType(UserActions.GET_USER_ORDERS)
     .switchMap(() => this.userService.getOrders())
     .filter((orders) => orders.length > 0)

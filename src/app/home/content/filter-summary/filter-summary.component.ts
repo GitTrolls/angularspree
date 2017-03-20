@@ -1,9 +1,4 @@
-import { SearchActions } from './../../reducers/search.actions';
-import { getFilters } from './../../reducers/selectors';
-import { AppState } from './../../../interfaces';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Rx';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-filter-summary',
@@ -11,18 +6,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./filter-summary.component.scss']
 })
 export class FilterSummaryComponent implements OnInit {
-  filters$: Observable<any>;
+  filters: string[] = ['Roadster', 'Will Lifestyle'];
 
-  constructor(private store: Store<AppState>,
-    private search: SearchActions) {
-    this.filters$ = this.store.select(getFilters);
-  }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  removeFilter(removedFilter) {
-    this.store.dispatch(this.search.removeFilter(removedFilter));
   }
 
 }
