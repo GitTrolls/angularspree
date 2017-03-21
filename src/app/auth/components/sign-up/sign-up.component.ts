@@ -15,7 +15,6 @@ import { Subscription } from 'rxjs/Rx';
 })
 export class SignUpComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup;
-  formSubmit = false;
   title = environment.AppName;
   registerSubs: Subscription;
 
@@ -35,7 +34,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
   onSubmit() {
     const values = this.signUpForm.value;
     const keys = Object.keys(values);
-    this.formSubmit = true;
 
     if (this.signUpForm.valid) {
       this.registerSubs = this.authService.register(values).subscribe(data => {
