@@ -22,8 +22,6 @@ import { FilterComponent } from './sidebar/filter/filter.component';
 // Routes
 import { HomeRoutes as routes } from './home.routes';
 
-import { FilterPipe } from './content/product-list/product-filter.pipe';
-
 @NgModule({
   declarations: [
     // components
@@ -38,7 +36,6 @@ import { FilterPipe } from './content/product-list/product-filter.pipe';
     FilterSummaryComponent,
     ContentComponent,
     // pipes
-    FilterPipe,
   ],
   exports: [
   ],
