@@ -11,10 +11,13 @@ import { ReturnListItemComponent } from './components/returns/return-list-item/r
 import { UserComponent } from './user.component';
 
 // services
-// import { UserService } from './services/user.service';
+import { UserService } from './services/user.service';
 
 import { UserRoutes as routes } from './user.routes';
 import { AddressesComponent } from './components/addresses/addresses.component';
+import { UserActions } from './actions/user.actions';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './effects/user.effects';
 import { SharedModule } from '../shared/index';
 import { OrderDetailComponent } from './components/orders/order-detail/order-detail.component';
 
@@ -42,9 +45,12 @@ import { OrderDetailComponent } from './components/orders/order-detail/order-det
 
   ],
   providers: [
+    UserService,
+    UserActions
   ],
   imports: [
     RouterModule.forChild(routes),
+    EffectsModule.run(UserEffects),
     SharedModule
   ]
 })
