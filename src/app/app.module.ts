@@ -37,8 +37,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     LayoutModule,
     CheckoutModule,
     CoreModule,
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
-    SharedModule
+    StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   providers: [],
   bootstrap: [AppComponent]
