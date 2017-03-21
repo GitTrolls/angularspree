@@ -15,10 +15,11 @@ import {
 } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from './../../../environments/environment';
-import 'rxjs/Rx';
+import { Subject } from 'rxjs/Rx';
 
 @Injectable()
 export class HttpService extends Http {
+  public loading = new Subject();
 
   constructor(
     backend: ConnectionBackend,
@@ -46,7 +47,7 @@ export class HttpService extends Http {
   get(url: string, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.get(this.getFullUrl(url), this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
@@ -71,7 +72,7 @@ export class HttpService extends Http {
   post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.post(this.getFullUrl(url), body, this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
@@ -92,7 +93,7 @@ export class HttpService extends Http {
   put(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.put(this.getFullUrl(url), body, this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
@@ -112,7 +113,7 @@ export class HttpService extends Http {
   delete(url: string, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.delete(this.getFullUrl(url), this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
@@ -159,6 +160,7 @@ export class HttpService extends Http {
   private requestInterceptor(): void {
     console.log('Sending Request');
     // this.loaderService.showPreloader();
+    this.loading.next(true);
   }
 
   /**
@@ -167,6 +169,7 @@ export class HttpService extends Http {
   private responseInterceptor(): void {
     console.log('Request Complete');
     // this.loaderService.hidePreloader();
+    this.loading.next(false);
   }
 
   /**
@@ -178,6 +181,7 @@ export class HttpService extends Http {
   private onCatch(error: any, caught: Observable<any>): Observable<any> {
     console.log('Something went terrible wrong and error is', error);
     // this.loaderService.popError();
+    this.loading.next(false);
     return Observable.throw(error);
   }
 
@@ -195,6 +199,7 @@ export class HttpService extends Http {
   private onSubscribeError(error: any): void {
     console.log('Something Went wrong while subribing', error);
     // this.loaderService.popError();
+    this.loading.next(false);
   }
 
   /**
@@ -202,5 +207,6 @@ export class HttpService extends Http {
    */
   private onFinally(): void {
     this.responseInterceptor();
+    this.loading.next(false);
   }
 }
