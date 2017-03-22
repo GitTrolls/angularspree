@@ -11,21 +11,7 @@ import { Product } from '../core/models/product';
 
 @Component({
   selector: 'app-home',
-  template: `
-    <app-breadcrumb [taxonomies]="taxonomies$ | async"></app-breadcrumb>
-    <div class="col-xs-12">
-      <div class="col-xs-3">
-        <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons>
-      </div>
-      <div class="col-xs-9">
-        <app-content 
-          [products]="products$ | async" 
-          [taxonIds]="selectedTaxonIds$ | async"
-          (toggleLayout)="toggleLayout($event)">
-        </app-content>
-      </div>
-    </div>
-  `,
+  templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
@@ -43,5 +29,5 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() { }
-
+ 
 }
