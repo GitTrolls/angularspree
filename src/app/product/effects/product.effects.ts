@@ -12,7 +12,8 @@ import { Action } from '@ngrx/store';
 @Injectable()
 export class ProductEffects {
   constructor(private actions$: Actions,
-              private productService: ProductService,
+              private productService: ProductDummyService,
+              private readProductService: ProductService,
               private productActions: ProductActions) { }
 
   // tslint:disable-next-line:member-ordering
@@ -31,6 +32,6 @@ export class ProductEffects {
   @Effect()
   GetProductDetail$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_PRODUCT_DETAIL)
-    .switchMap((action: Action) => this.productService.getProduct(action.payload))
+    .switchMap((action: Action) => this.readProductService.getProduct(action.payload))
     .map((data: any) => this.productActions.getProductDetailSuccess(data));
 }
