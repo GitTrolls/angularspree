@@ -14,25 +14,21 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class=""><a href="#">Men <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Women</a></li>
-        <li><a href="#">Kids</a></li>
+        <li *ngFor="let taxon of taxonList" class="">
+          <a (click)="selectTaxon(taxon)" href="javascript:void(0)">{{taxon.name}}
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
       </ul>
       
       <app-profile-dropdown [totalCartItems]="totalCartItems | async" [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>
 
-      <form class="form-inline navbar-form navbar-right">
-        <div class="form-group">
-          <div class="input-group">
-            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
-            <div class="input-group-addon">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </div>
-          </div>
-        </div>
-      </form>
+      <div class="desktop-query">
+        <input placeholder="Search" class="desktop-searchBar">
+        <a class="desktop-submit">
+          <span class="web-sprite desktop-iconSearch sprites-search"></span>
+        </a>
+      </div>
     </div>
-    <!-- /.navbar-collapse -->
   </div>
-  <!-- /.container-fluid -->
 </nav>
