@@ -11,14 +11,4 @@ export class ProductService {
     return this.http.get(`/spree/api/v1/products/${id}`)
     .map(res => res.json());
   }
-
-  getTaxonomies(): any {
-    return this.http.get(`/spree/api/v1/taxonomies?set=nested`)
-    .map(res => res.json());
-  }
-
-  getProducts(): any {
-    return this.http.get(`/spree/api/v1/products`)
-    .map(res => res.json());
-  }
 }
