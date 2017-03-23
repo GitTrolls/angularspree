@@ -4,13 +4,16 @@ import { Injectable } from '@angular/core';
 export class PaymentService {
 
   setCODAsSelectedMode(modes) {
-    let selectedMode;
+    if (modes.length === 0) {
+      return {};
+    }
+
     modes.forEach((mode) => {
       if (mode.name === 'Check') {
-        selectedMode = mode;
+        return mode;
       }
     });
-    return selectedMode;
+    return modes[1];
   }
 
 }
