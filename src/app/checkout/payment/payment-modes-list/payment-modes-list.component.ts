@@ -1,3 +1,6 @@
+import { CheckoutActions } from './../../actions/checkout.actions';
+import { AppState } from './../../../interfaces';
+import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { PaymentMode } from './../../../core/models/payment_mode';
 import { Observable } from 'rxjs/Rx';
@@ -13,12 +16,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PaymentModesListComponent implements OnInit {
 
   @Input() paymentAmount: number;
+  @Input() orderNumber: number;
   paymentModes: PaymentMode[];
   selectedMode: PaymentMode = new PaymentMode;
 
   constructor(private checkoutService: CheckoutService,
     private paymentService: PaymentService,
-    private router: Router) {
+    private router: Router,
+    private store: Store<AppState>,
+    private checkoutActions: CheckoutActions) {
       this.fetchAllPayments();
   }
 
@@ -40,8 +46,13 @@ export class PaymentModesListComponent implements OnInit {
   makePayment() {
     const paymentModeId = this.selectedMode.id;
     this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount)
+      .do(() => {
+        this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
+        this.router.navigate(['/user', 'orders', 'detail', this.orderNumber]);
+        this.checkoutService.createEmptyOrder()
+          .subscribe();
+      })
       .subscribe();
-    this.router.navigate(['/']);
   }
 
 }

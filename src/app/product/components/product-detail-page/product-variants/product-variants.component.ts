@@ -14,8 +14,6 @@ interface CurrentSelectedOptionsType {
 export class ProductVariantsComponent implements OnInit {
   @Input() customOptionTypesHash: any;
   @Input() currentSelectedOptions = {};
-  @Input() mainOptions;
-  @Input() correspondingOptions;
   @Output() onOptionClickEvent = new EventEmitter();
   constructor() {
   }
