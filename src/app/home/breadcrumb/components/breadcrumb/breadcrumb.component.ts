@@ -7,8 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BreadcrumbComponent implements OnInit {
   @Input() taxonomies;
-  // breadcrumbs: string[] = ['Home', 'Clothing', 'Shirts', 'Men Casual Shirts']
-  breadcrumbs: string[] = ['Home', 'Categories'];
+  breadcrumbs: string[] = ['Home', 'Clothing', 'Shirts', 'Men Casual Shirts']
 
   constructor() { }
 

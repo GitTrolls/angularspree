@@ -111,9 +111,6 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
           billAddress: _bill_address
         }) as CheckoutState;
 
-      case CheckoutActions.ORDER_COMPLETE_SUCCESS:
-        return initialState;
-
       default:
         return state;
     }
