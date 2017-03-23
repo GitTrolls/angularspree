@@ -44,7 +44,7 @@ export class VariantRetriverService {
     this.getVariantId();
     this.parseVariantId();
     this.getVariantFromProduct();
-    this.setCorrespondingOptionValues();
+
     return {
       newSelectedoptions: this.currentSelectedOptions,
       variant: this.variant
@@ -62,18 +62,12 @@ export class VariantRetriverService {
   }
 
   setCombinedVariantIds() {
-    const temp = [];
     for (const key in this.customSelectedOptions) {
       if (this.customSelectedOptions.hasOwnProperty(key)) {
-        this.customSelectedOptions[key].variantIds.forEach((obj) => {
-          temp.push(Object.keys(obj)[0]);
-        });
+        this.currentVariantIds
+          .push(this.customSelectedOptions[key].variantIds);
       }
     }
-    this.currentVariantIds
-      .push(temp);
-
-
   }
 
   getVariantId() {
@@ -97,20 +91,18 @@ export class VariantRetriverService {
 
   getVariantFromProduct() {
     const result = this.product.variants
-      .filter(v => { return v.id === parseInt(this.variantId); });
+      .filter(v => { return v.id === this.variantId; });
+
     this.variant = result ? result[0] : null;
   }
 
   setCurrentSelectedOptions() {
     const currSelectedOptionType = this.currSelectedOption.value
       .optionValue
-      .option_type_name;
+      .option_type_presentation;
 
     this.currentSelectedOptions[currSelectedOptionType] = this.currSelectedOption.key;
 
   }
 
-  setCorrespondingOptionValues() {
-    this.varain
-  }
 }
