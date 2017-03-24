@@ -20,7 +20,8 @@ import { Product } from '../core/models/product';
       <div class="col-xs-9">
         <app-content 
           [products]="products$ | async" 
-          [taxonIds]="selectedTaxonIds$ | async">
+          [taxonIds]="selectedTaxonIds$ | async"
+          (toggleLayout)="toggleLayout($event)">
         </app-content>
       </div>
     </div>
