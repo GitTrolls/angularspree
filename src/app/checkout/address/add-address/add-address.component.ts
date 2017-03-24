@@ -1,7 +1,3 @@
-import { getAuthStatus } from './../../../auth/reducers/selectors';
-import { AppState } from './../../../interfaces';
-import { Store } from '@ngrx/store';
-import { AuthActions } from './../../../auth/actions/auth.actions';
 import { Subscription } from 'rxjs/Rx';
 import { AddressService } from './../services/address.service';
 import { CheckoutService } from './../../../core/services/checkout.service';
@@ -16,19 +12,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class AddAddressComponent implements OnInit, OnDestroy {
 
   addressForm: FormGroup;
-  emailForm: FormGroup;
-  isAuthenticated: boolean;
 
-  constructor(
-    private fb: FormBuilder, private authActions: AuthActions,
-    private checkoutService: CheckoutService,
-    private addrService: AddressService,
-    private store: Store<AppState>) {
-      this.addressForm = addrService.initAddressForm();
-      this.emailForm = addrService.initEmailForm();
-      this.store.select(getAuthStatus).subscribe((auth) => {
-        this.isAuthenticated = auth;
-      });
+  constructor(private fb: FormBuilder, private checkoutService: CheckoutService, private addrService: AddressService) {
+    this.addressForm = addrService.initAddressForm();
   }
 
   ngOnInit() {
@@ -36,19 +22,9 @@ export class AddAddressComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const address = this.addressForm.value;
-    let addressAttributes;
-    if (this.isAuthenticated) {
-      addressAttributes = this.addrService.createAddresAttributes(address);
-    } else {
-      const email = this.getEmailFromUser();
-      addressAttributes = this.addrService.createGuestAddressAttributes(address, email);
-    }
+    const addressAttributes = this.addrService.createAddresAttributes(address);
     this.checkoutService.updateOrder(addressAttributes)
       .subscribe();
-  }
-
-  private getEmailFromUser() {
-    return this.emailForm.value.email;
   }
 
   ngOnDestroy() {

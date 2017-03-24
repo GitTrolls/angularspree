@@ -11,7 +11,6 @@
     margin-right: 25px;
 		border-radius: 4px;
 		position: relative;
-		cursor: pointer;
 		.name {
 			font-family: "Whitney-semi-bold";
 			font-weight: 600;
@@ -25,18 +24,7 @@
 				color: #535766;
     		line-height: 1.4;
     		word-break: break-word;
-    		font-size: 13px;
-				.mob {
-					padding: 8px 0;
-					.mob-no {
-						font-weight: 600;
-						font-family: "Whitney-semi-bold";
-					}
-				}
 			}
-		}
-		.serviceability {
-			font-size: 13px;
 		}
 		.select {
 			cursor: pointer;
