@@ -9,11 +9,11 @@
           <div class="login-third-party-login">
             <p class="login-button-info-text login-info-text">EASILY USING</p>
             <div class="login-button-container">
-              <button class="login-facebook login-button coming-soon">
+              <button class="login-facebook login-button">
                 <span class="header-sprite login-fb-logo"></span>
                 FACEBOOK
               </button>
-              <button class="login-google login-button coming-soon" id="gPlusLogin">
+              <button class="login-google login-button" id="gPlusLogin">
                 <span class="header-sprite login-gplus-logo"></span>
                 GOOGLE
               </button>
@@ -48,15 +48,6 @@
             <div class="login-right-links">
               <span class="login-info-text">New to {{title}}?</span>
               <a class="login-create-account-link login-link" [routerLink]="['/auth']">Create Account</a>
-            </div>
-          </div>
-          <div class="notify-container"
-            [ngClass]="{'in': !signInForm.valid && !signInForm.get('password').untouched && !signInForm.get('email').untouched}">
-            <div class="notify-error notify-content">
-              <div class="notify-error-message">
-                <span class="notify-icon">!</span>
-                <p class="notify-icon-text">Please enter valid Credentials</p>
-              </div>
             </div>
           </div>
         </div>
