@@ -9,11 +9,11 @@
           <div class="login-third-party-login">
             <p class="login-button-info-text login-info-text">EASILY USING</p>
             <div class="login-button-container">
-              <button class="login-facebook login-button coming-soon">
+              <button class="login-facebook login-button">
                 <span class="header-sprite login-fb-logo"></span>
                 FACEBOOK
               </button>
-              <button class="login-google login-button coming-soon" id="gPlusLogin">
+              <button class="login-google login-button" id="gPlusLogin">
                 <span class="header-sprite login-gplus-logo"></span>
                 GOOGLE
               </button>
@@ -26,31 +26,38 @@
                 <input type="email" class="login-user-input-email login-user-input" name="email" placeholder="Your Email Address" formControlName="email"
                   autocomplete="off">
                 <div *ngIf="signInForm.get('email').errors && signInForm.get('email').touched">
-                  <span class="login-error-icon text-danger">!</span>
-                  <p class="login-error-message text-danger">{{signInForm.get('email').errors.msg || 'Please enter a valid email id'}}</p>
+                  <span class="login-error-icon">!</span>
+                  <p class="login-error-message">{{signInForm.get('email').errors.msg || 'Please enter a valid email id'}}</p>
                 </div>
               </div>
               <div class="login-input-item">
                 <input type="password" class="login-user-input-password login-user-input" name="password" placeholder="Enter Password" formControlName="password"
                   autocomplete="off">
                 <div *ngIf="signInForm.get('password').errors && signInForm.get('password').touched">
-                  <span class="login-error-icon text-danger">!</span>
-                  <p class="login-error-message text-danger">{{signInForm.get('password').errors.msg || 'Password must be at least 6 characters'}}</p>
+                  <span class="login-error-icon">!</span>
+                  <p class="login-error-message">{{signInForm.get('password').errors.msg || 'Password must be at least 6 characters'}}</p>
                 </div>
               </div>
             </fieldset>
             <fieldset class="login-login-button-container">
-              <button type="submit" class="btn btn-danger login-login-button">Log in</button>
+              <button type="submit" class="login-login-button">Log in</button>
             </fieldset>
           </form>
           <div class="login-link-container">
-            <small>
-              <a class="login-link text-danger" routerLink="/">Recover password</a>
-              <div class="login-right-links">
-                <span class="text-default">New to {{title}}?</span>
-                <a class="login-create-account-link login-link text-danger" [routerLink]="['/auth']">Create Account</a>
+            <a class="login-link" routerLink="/">Recover password</a>
+            <div class="login-right-links">
+              <span class="login-info-text">New to {{title}}?</span>
+              <a class="login-create-account-link login-link" [routerLink]="['/auth']">Create Account</a>
+            </div>
+          </div>
+          <div class="notify-container"
+            [ngClass]="{'in': !signInForm.valid && !signInForm.get('password').untouched && !signInForm.get('email').untouched}">
+            <div class="notify-error notify-content">
+              <div class="notify-error-message">
+                <span class="notify-icon">!</span>
+                <p class="notify-icon-text">Please enter valid Credentials</p>
               </div>
-            </small>
+            </div>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../interfaces';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { getAuthStatus } from '../../reducers/selectors';
 
 @Component({
@@ -17,12 +17,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   signInForm: FormGroup;
   title = environment.AppName;
   loginSubs: Subscription;
-  returnUrl: string;
 
   constructor(
     private fb: FormBuilder,
     private store: Store<AppState>,
-    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService
   ) {
@@ -31,8 +29,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.initForm();
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   onSubmit() {
@@ -76,7 +72,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   redirectIfUserLoggedIn() {
     this.store.select(getAuthStatus).subscribe(
       data => {
-        if (data === true) { this.router.navigate([this.returnUrl]); }
+        if (data === true) { this.router.navigateByUrl('/'); }
       }
     );
   }

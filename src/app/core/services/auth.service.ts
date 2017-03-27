@@ -24,19 +24,10 @@ export class AuthService {
       'spree/login.json',
       { spree_user: data }
     ).map((res: Response) => {
-      data = res.json();
-      if (!data.error) {
-        // Setting token after login
-        this.setTokenInLocalStorage(data);
-        this.store.dispatch(this.actions.loginSuccess());
-      } else {
-        this.http.loading.next({
-          loading: false,
-          hasError: true,
-          hasMsg: 'Please enter valid Credentials'
-        });
-      }
-      return data;
+      // Setting token after login
+      this.setTokenInLocalStorage(res.json());
+      this.store.dispatch(this.actions.loginSuccess());
+      return res.json();
     });
     // catch should be handled here with the http observable
     // so that only the inner obs dies and not the effect Observable
@@ -50,18 +41,9 @@ export class AuthService {
       'api/account',
       { spree_user: data }
     ).map((res: Response) => {
-      data = res.json();
-      if (!data.errors) {
-        // Setting token after login
-        this.setTokenInLocalStorage(res.json());
-        this.store.dispatch(this.actions.loginSuccess());
-      } else {
-        this.http.loading.next({
-          loading: false,
-          hasError: true,
-          hasMsg: 'Please enter valid Credentials'
-        });
-      }
+      // Setting token after login
+      this.setTokenInLocalStorage(res.json());
+      this.store.dispatch(this.actions.loginSuccess());
       return res.json();
     });
     // catch should be handled here with the http observable

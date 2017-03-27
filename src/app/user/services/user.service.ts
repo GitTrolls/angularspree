@@ -6,7 +6,6 @@ import { AppState } from '../../interfaces';
 import { Observable } from 'rxjs/Rx';
 import { Order } from '../../core/models/order';
 import { Response } from '@angular/http';
-import { User } from '../../core/models/user';
 
 @Injectable()
 export class UserService {
@@ -29,12 +28,6 @@ export class UserService {
   getOrderDetail(orderNumber): Observable<Order> {
     return this.http.get(`spree/api/v1/orders/${orderNumber}`)
       .map((res: Response) => res.json());
-  }
-
-  getUser(): Observable<User> {
-    const user_id = JSON.parse(localStorage.getItem('user')).id;
-    return this.http.get(`spree/api/v1/users/${user_id}`)
-      .map(res => res.json());
   }
 
 }
