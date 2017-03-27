@@ -19,12 +19,18 @@
 
 ## What is AngularSpree?
 
-AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ecommerce](https://spreecommerce.com/). 
+AngularSpree is an open source Angular(2.x+) front-end application for [Spree Commerce](https://github.com/spree/spree). 
 **It's free and always will be**. 
 
 **Bootstrap 4 Compatible**
 
 Go ahead use it the way you want to or let us know at `hello@aviabird.com` if you need any help with this project.
+
+<p align="center">
+  <a href="https://angular-spree.herokuapp.com/" target='_blank'>
+    <img alt="Slack invite Logo" title="Slack invite Logo" src="http://res.cloudinary.com/yatrum/image/upload/v1490434825/slack_vmaait.png" width="300">
+  </a>
+</p>
 
 
 ## Why did we build it?
@@ -47,15 +53,35 @@ Currently, this is a fairly basic vesion of the application. We are calling it a
 * Authentication (Login/Signup)
 
 ### What's coming very soon?
-* Payment options credit/debit cards.
+* __Angular Universal__ support for better SEO and [much more](https://github.com/angular/angular/issues/13822).
+* __Payment__ options credit/debit cards.
+* __Multilanguage__ Support i18n.
 * More sorting features(new/popular, Discount, Price[low,high]).
 * Support for further types of products(size, pattern, collar, etc).
 * Support for further options in types eg. size(32, 34, 36) etc. etc.
-* Multilanguage Support i18n.
 * Ability to add more than one addresses.
 * and many more....
 
 There is a long way to go... keep an eye on this [project](https://github.com/aviabird/angularspree/) here on github.
+
+## Angular 2 Fundamentals course
+
+Based on this application and **[other applications](https://github.com/aviabird/yatrum)** we have built in past we are working on a full blown Angular 2 fundamentals course on udemy. Throughout this course you'll learn how to build yatrum from ground up.
+
+### Course curriculum
+
+* Architecture, setup, source files
+* TypeScript basics
+* Getting started with latest angular
+* Template fundamentals
+* Rendering flows
+* Component Architecture and Modules
+* Services, Http and Observables
+* Template Forms, Inputs and Validation
+* Reactive Forms and more magic
+* Routing
+
+__[Subscribe to this course here](https://upscri.be/a00eaf/)__
 
 ## What in the Tech News?
 
@@ -76,9 +102,9 @@ We are working on documentation and we can share that once we are looking at a m
 * ImmutableJs to create and safeguard objects againts mutability.
 * Project is divided into modules which are more or less independant of each other except core module.
 
-**Current version of Angular is latest release [4.0.0-rc.5](https://github.com/angular/angular/releases/tag/4.0.0-rc.5).
+__Current version of Angular is latest release [4.0.0](https://github.com/angular/angular/releases/tag/4.0.0).__
 
-**Current version of Angular-cli is [1.0.0-rc.4](https://github.com/angular/angular-cli/releases/tag/v1.0.0-rc.4)
+__Current version of Angular-cli is [1.0.0](https://github.com/angular/angular-cli/releases/tag/v1.0.0).__
 
 We try to make sure that we keep the repository upto date with the angular release every weekend.
 
@@ -90,7 +116,7 @@ On this page user can filter products as per category. Change layout of the prod
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="70%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png">
   </a>
 </p>
 
@@ -100,7 +126,7 @@ Cart page displays all the line items or items in the cart which the user has ad
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="70%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png">
   </a>
 </p>
 
@@ -110,7 +136,7 @@ Display's the detailed product information of a particular product.
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="70%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188748/screen_product_page.png">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188748/screen_product_page.png">
   </a>
 </p>
 
@@ -141,7 +167,7 @@ There are many different ways to contribute to AngularSpree's development, just 
 * Patch reviews
 * UI enhancements
 
-Big features are also welcome but if you want to see your contributions included in AngularSpree's codebase we strongly recommend you start by initiating a chat on our **[slack channel](https://angular-spree.herokuapp.com/)**.
+Big features are also welcome but if you want to see your contributions included in AngularSpree's codebase we strongly recommend you start by initiating a chat on our __[slack channel](https://angular-spree.herokuapp.com/)__.
 
 ## Development server
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -158,9 +184,9 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 We are [Aviabird Technologies](https://aviabird.com).
 
-**We love to create awesome Web & Mobile products.**
+__We love to create awesome Web & Mobile products.__
 
-**We are very proud of our work.**
+__We are very proud of our work.__
 
 We love technologies like Golang, Elixir, Scala, Ruby, Javascript, Typescript, Swift, Java.
 
@@ -171,3 +197,7 @@ We love some frameworks too:-
 * AngularJs (1.x+ & 2.x+)
 * ReactJs
 * BackboneJs
+
+### We are avialible for hire
+
+__If you want to hire us for a project, please contact us on `hello@aviabird.com`.__

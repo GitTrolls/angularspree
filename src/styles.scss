@@ -7,8 +7,12 @@
     font-family: "Whitney";
     src: url("assets/WhitneyHTF-Book.woff") format("woff")
 }
+
+// bootstrap fonts
+$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+
 @import "app/shared/scss/themes";
-@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+@import "app/shared/scss/custom_bootstrap";
 @import url('../node_modules/font-awesome/css/font-awesome.min.css');
 
 body {
@@ -23,11 +27,6 @@ body {
 .col-centered {
   float: none;
   margin: 0 auto;
-}
-
-html *:not(.fa)
-{
-   font-family: Whitney;
 }
 
 .row-base {
@@ -49,4 +48,8 @@ html *:not(.fa)
   align-items: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
+}
+
+.coming-soon {
+  cursor: url('/assets/comingsoon.png'), auto !important;
 }
