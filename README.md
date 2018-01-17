@@ -17,11 +17,6 @@
   <a href="https://www.pivotaltracker.com/n/projects/1985365" target='_blank'><img alt="Pivotal Project page" src="http://res.cloudinary.com/zeus999/image/upload/c_limit,h_1041,w_1487/v1486457388/Yatrum%20Logo/pt-badge_ss3dyt.svg"></a>
 </p>
 
-<p align="center">
-  <a href="https://teracommerce.in" target="_blank"><img alt="TeraCommerce Bundle" src="https://res.cloudinary.com/ashish173/image/upload/v1506115865/Full_E-COMMERCE_BUNDL_3_km1yzz.jpg"></a>
-</p>
-
-
 ### :rocket: **Progressive Web App:** [Lighthouse](https://github.com/GoogleChrome/lighthouse) score of __95/100__.
 
 ## What is AngularSpree?
@@ -46,14 +41,6 @@ We have been working with Spree for very long time, making products for a lot of
 
 When Angular team realeased the beta version in March last year we knew that angular was going to be a big player soon.
 We decided to give it a try. Hence, AngularSpree was born as a front-end framework for the most awesome backend api for E-Commerce out there.
-
-🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-If you are looking to build a project similar to this one with all the ready-made setup, then I highly encourage you to look at this [starter seed project](https://github.com/aviabird/angular-seed) by [Aviabird Team](https://aviabird.com).
-
-**[AngularSeed](https://github.com/aviabird/angular-seed) is a Plug and play Seed project built with ❤️ using Angular 5, Redux/ngrx-store 4, Observables & ImmutableJs. We are commited to keeping this project upto date with all the latest versions of all the libs and components.**
-
-🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
 ## What's included?
 
