@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { SearchParam } from './../../models/search-param';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-filter-summary-container',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-summary-container.component.scss']
 })
 export class FilterSummaryContainerComponent implements OnInit {
+  @Input() appliedFilters: SearchParam;
+  @Output() updatedFilters = new EventEmitter<SearchParam>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  filterUpdated(filter: { name: any; value: any; }) {
+    this.updatedFilters.emit({...this.appliedFilters, [filter.name]: filter.value})
   }
 
 }

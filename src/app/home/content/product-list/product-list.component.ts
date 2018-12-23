@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
   appConfig = environment.config;
   currency = environment.config.currency_symbol;
   noImageUrl = 'assets/default/image-placeholder.svg';
-  
+
   constructor(
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions,

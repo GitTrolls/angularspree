@@ -3,7 +3,11 @@ export interface SearchParam {
   categories?: Array<string>;
   brands?: Array<string>;
   filterOptions?: Array<FilterOption>;
-  sort: string;
+  sort?: string;
+  page?: {
+    limit?: string;
+    offset?: string;
+  }
 }
 
 export interface FilterOption {
